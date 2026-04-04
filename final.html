@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fashion Shop</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body {
+    margin: 0;
+    background: #f5f5f5;
+    color: #222;
+}
+
+h1, h2, h3 {
+    margin: 0 0 15px;
+    font-weight: 600;
+}
+
+p {
+    margin: 0 0 10px;
+    color: #555;
+}
+
+.frame {
+    background: #fff;
+    margin: 40px auto;
+    width: 1200px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.divider {
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #eee;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #000;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.sidebar {
+    border: 1px solid #eee;
+    padding: 20px;
+}
+
+.masonry {
+    column-count: 3;
+    column-gap: 20px;
+}
+
+.masonry .card {
+    break-inside: avoid;
+    margin-bottom: 20px;
+}
+</style>
+</head>
+<div class="nav-links">
+            <a href="#">Home</a>
+            <a href="login.html" class="btn-login">Login</a>
+        </div>
+
+<body>
+
+<!-- 1. HOME -->
+<section class="frame" id="home">
+    <h1>Fashion Shop</h1>
+    <img src="image/1.png" style="height:350px;">
+    <h2>New Collection</h2>
+    <p>Discover our latest arrivals designed for modern elegance.</p>
+    <a class="btn" href="#listing">Shop Now</a>
+    <h3><button>Women</button></h3>
+
+    <div class="divider"></div>
+
+    <div class="grid">
+        <div class="card" onclick="location.href='#detail'">
+            <img src="image/2.png" width="200">
+            <h3>Product</h3>
+            <p>$120</p>
+        </div>
+        <div class="card" onclick="location.href='#detail'">
+            <img src="image/3.png" width="170">
+            <h3>Product</h3>
+            <p>$98</p>
+        </div>
+        <div class="card" onclick="location.href='#detail'">
+            <img src="image/4.png" width="160">
+            <h3>Product</h3>
+            <p>$140</p>
+        </div>
+        <div class="card" onclick="location.href='#detail'">
+            <img src="image/5.png" width="200">
+            <h3>Product</h3>
+            <p>$110</p>
+        </div>
+    </div>
+</section>
+
+<!-- 2. PRODUCT LIST -->
+<section class="frame" id="listing">
+   <h3><button>Men</button></h3>
+    
+        <div class="grid">
+            <div class="card" onclick="location.href='#detail'">
+                <img src="image/6.png" width="200">
+                <h3>Item</h3>
+                <p>$95</p>
+            </div>
+            <div class="card" onclick="location.href='#detail'">
+                <img src="image/7.png" width="200">
+                <h3>Item</h3>
+                <p>$105</p>
+            </div>
+            <div class="card" onclick="location.href='#detail'">
+                <img src="image/8.png" width="200">
+                <h3>Item</h3>
+                <p>$125</p>
+            </div>
+            <div class="card" onclick="location.href='#detail'">
+                <img src="image/9.png" width="200">
+                <h3>Item</h3>
+                <p>$150</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. PRODUCT DETAIL -->
+<section class="frame" id="detail">
+    <h1>Product Detail</h1>
+
+    <div class="two-col">
+        <img src="image/7.png" width="300" alt="Luxury Jacket">
+
+        <div>
+            <h2>Luxury Jacket</h2>
+            <p><strong>$180</strong></p>
+            <p>High-quality materials with a modern tailored fit.</p>
+
+            <!-- Size Selection -->
+            <label>Size</label>
+            <select>
+                <option>Select size</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+            </select>
+
+            <!-- Quantity -->
+            <label>Quantity</label>
+            <input type="number" value="1" min="1">
+
+            <br>
+            <a class="btn" href="#cart">Add to Cart</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- 4. CART -->
+<section class="frame" id="cart">
+    <h1>Shopping Cart</h1>
+    <div class="card">
+        <img src="image/7.png" width="300">
+        <h3>Luxury Jacket</h3>
+        <p>Qty: 1</p>
+        <p>$180</p>
+    </div>
+    <h2>Total: $180</h2>
+    <a class="btn" href="#shipping">Proceed to Checkout</a>
+</section>
+
+<!-- 5. SHIPPING -->
+<section class="frame" id="shipping">
+    <h1>Checkout – Shipping</h1>
+
+    <label>Full Name</label>
+    <input type="text" placeholder="Enter your full name">
+
+    <label>Address</label>
+    <input type="text" placeholder="Street address">
+
+    <label>City / Country</label>
+    <input type="text" placeholder="City, Country">
+
+    <label>Delivery Method</label>
+    <select>
+        <option>Select delivery method</option>
+        <option>Standard Delivery (3–5 days)</option>
+        <option>Express Delivery (1–2 days)</option>
+        <option>Store Pickup</option>
+    </select>
+
+    <br><br>
+    <a class="btn" href="#payment">Continue to Payment</a>
+</section>
+</body>
+</html>
