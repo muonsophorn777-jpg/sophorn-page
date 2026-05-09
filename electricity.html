@@ -1,0 +1,127 @@
+<style>
+    body{
+        margin:0;
+        background: linear-gradient(135deg, #0f172a, #020617);
+        color:white;
+        font-family: 'Segoe UI', sans-serif;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+    }
+
+    .box{
+        background: rgba(17, 24, 39, 0.9);
+        padding:25px;
+        border-radius:20px;
+        width:320px;
+        box-shadow: 0 0 25px rgba(34,197,94,0.2);
+        backdrop-filter: blur(10px);
+        animation: fadeIn 0.6s ease-in-out;
+    }
+
+    h2{
+        text-align:center;
+        color:#22c55e;
+        margin-bottom:15px;
+    }
+
+    input{
+        width:100%;
+        padding:12px;
+        margin:10px 0;
+        border-radius:10px;
+        border:none;
+        background:#1f2937;
+        color:white;
+        outline:none;
+        transition:0.3s;
+    }
+
+    input:focus{
+        box-shadow:0 0 8px #22c55e;
+        background:#111827;
+    }
+
+    button{
+        width:100%;
+        padding:12px;
+        border:none;
+        border-radius:10px;
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        color:white;
+        font-weight:bold;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    button:hover{
+        transform: scale(1.05);
+        box-shadow:0 0 15px #22c55e;
+    }
+
+    .result{
+        margin-top:15px;
+        text-align:center;
+        font-size:16px;
+        padding:10px;
+        border-radius:10px;
+        background:#020617;
+    }
+
+    .error{
+        color:#ef4444;
+    }
+
+    .success{
+        color:#22c55e;
+    }
+
+    @keyframes fadeIn{
+        from{
+            opacity:0;
+            transform: translateY(20px);
+        }
+        to{
+            opacity:1;
+            transform: translateY(0);
+        }
+    }
+</style>
+<?php
+$result = "";
+if(isset($_POST['calculate'])){
+    $old = $_POST['old'];
+    $new = $_POST['new'];
+
+    if($new >= $old){
+        $unit = $new - $old;
+        $price = $unit * 0.25;
+        $result = "ប្រើប្រាស់: $unit kWh | តម្លៃ: $$price";
+    } else {
+        $result = "លេខថ្មីត្រូវធំជាងលេខចាស់";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electricity</title>
+<body>
+
+<div class="box">
+    <h2>គណនាថ្លៃអគ្គិសនី</h2>
+
+    <form method="post">
+        <input type="number" name="old" placeholder="លេខចាស់" required>
+        <input type="number" name="new" placeholder="លេខថ្មី" required>
+
+        <button name="calculate">គណនា</button>
+    </form>
+
+    <div class="result"><?php echo $result; ?></div>
+</div>
+
+</body>
+</html>

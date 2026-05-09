@@ -1,0 +1,119 @@
+<?php
+$result = "";
+$showTable = false;
+
+if(isset($_POST['check'])){
+    $name = $_POST['name'] ?? "";
+    $attendance = (int)($_POST['attendance'] ?? 0);
+    $midterm = (int)($_POST['midterm'] ?? 0);
+    $final = (int)($_POST['final'] ?? 0);
+
+    if(!empty($name)){
+        $total = $attendance + $midterm + $final;
+
+        if($total >= 50){
+            $result = "Pass";
+        } else {
+            $result = "Fail";
+        }
+
+        $showTable = true;
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Score Table</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            text-align: center;
+        }
+
+        form{
+            background: white;
+            padding: 20px;
+            margin: 30px auto;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        input{
+            width: 90%;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button{
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: #45a049;
+        }
+
+        table{
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        th{
+            background: #4CAF50;
+            color: white;
+            padding: 10px;
+        }
+
+        td{
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover{
+            background: #f1f1f1;
+        }
+
+        h3{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<form method="post">
+    <h2>បញ្ចូលពិន្ទុ</h2>
+    ឈ្មោះ: <input type="text" name="name" required><br>
+    Attendance: <input type="number" name="attendance" required><br>
+    Midterm: <input type="number" name="midterm" required><br>
+    Final: <input type="number" name="final" required><br><br>
+
+    <button name="check">គណនា</button>
+</form>
+
+<?php if($showTable){ ?>
+        <tr>
+            <td><?php echo $name; ?></td>
+            <td><?php echo $attendance; ?></td>
+            <td><?php echo $midterm; ?></td>
+            <td><?php echo $final; ?></td>
+            <td><?php echo $attendance + $midterm + $final; ?></td>
+            <td><?php echo $result; ?></td>
+        </tr>
+    </table>
+<?php } ?>
+
+</body>
+</html>

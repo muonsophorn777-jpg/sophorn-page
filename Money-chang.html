@@ -1,0 +1,97 @@
+<?php
+$msg = "";
+if(isset($_POST['check'])){
+    $phone = $_POST['phone'];
+
+    if(preg_match('/^0[0-9]{8,9}$/', $phone)){
+        $msg = "លេខត្រឹមត្រូវ ✅";
+    } else {
+        $msg = "លេខមិនត្រឹមត្រូវ ❌";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Phone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        input:focus {
+            border-color: #4CAF50;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2>ពិនិត្យលេខទូរស័ព្ទ</h2>
+
+        <form method="post">
+            <input type="text" name="phone" placeholder="បញ្ចូលលេខ..." required>
+            <br>
+            <button name="check">ពិនិត្យ</button>
+        </form>
+
+        <div class="result 
+            <?php echo ($msg == "លេខត្រឹមត្រូវ ✅") ? 'success' : 'error'; ?>">
+            <?php echo $msg; ?>
+        </div>
+    </div>
+</body>
+</html>
